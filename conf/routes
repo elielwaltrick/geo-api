@@ -1,0 +1,69 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+
+
+#Options para pre-flight requests
+OPTIONS     /                          controllers.ApplicationController.opts
+OPTIONS     /autenticar                controllers.ApplicationController.opts
+
+
+#Login
+POST        /login                     controllers.SecurityController.login
+POST        /logout                    controllers.SecurityController.logout
+
+
+#Users
+GET         /usuarios                  controllers.UsuariosController.list
+POST		/usuarios		           controllers.UsuariosController.save
+PUT			/usuarios/:id	           controllers.UsuariosController.update(id: Integer)
+DELETE		/usuarios/:id	           controllers.UsuariosController.delete(id: Integer)
+GET			/usuarios/:id	           controllers.UsuariosController.retrieve(id: Integer)
+
+
+#Projetos
+GET         /projetos                  controllers.ProjetosController.list
+POST		/projetos		           controllers.ProjetosController.save
+POST        /projetos/inativar/:id     controllers.ProjetosController.inativar(id: Integer)
+POST        /projetos/ativar/:id       controllers.ProjetosController.ativar(id: Integer)
+PUT			/projetos/:id              controllers.ProjetosController.update(id: Integer)
+GET 		/projetos/:id              controllers.ProjetosController.retrieve(id: Integer)
+
+
+#Camadas
+GET         /camadas                   controllers.ProjetosCamadasController.list
+POST		/camadas		           controllers.ProjetosCamadasController.save
+PUT			/camadas/:id               controllers.ProjetosCamadasController.update(id: Integer)
+GET 		/camadas/:id               controllers.ProjetosCamadasController.retrieve(id: Integer)
+
+
+#Formulários
+GET         /formularios               controllers.ProjetosCamadasFormulariosController.list
+POST		/formularios		       controllers.ProjetosCamadasFormulariosController.save
+PUT			/formularios/:id           controllers.ProjetosCamadasFormulariosController.update(id: Integer)
+GET 		/formularios/:id           controllers.ProjetosCamadasFormulariosController.retrieve(id: Integer)
+
+
+#Campos
+GET         /campos                    controllers.ProjetosCamadasFormulariosCamposController.list
+POST		/campos		               controllers.ProjetosCamadasFormulariosCamposController.save
+PUT			/campos/:id                controllers.ProjetosCamadasFormulariosCamposController.update(id: Integer)
+GET 		/campos/:id                controllers.ProjetosCamadasFormulariosCamposController.retrieve(id: Integer)
+
+
+#Geometrias
+GET         /geometrias                controllers.ProjetosCamadasGeometriasController.list
+POST		/geometrias		           controllers.ProjetosCamadasGeometriasController.save
+PUT			/geometrias/:id            controllers.ProjetosCamadasGeometriasController.update(id: Integer)
+GET 		/geometrias/:id            controllers.ProjetosCamadasGeometriasController.retrieve(id: Integer)
+
+
+#Geometrias
+GET         /valores                   controllers.ProjetosCamadasValoresController.list
+POST		/valores		           controllers.ProjetosCamadasValoresController.save
+PUT			/valores/:id               controllers.ProjetosCamadasValoresController.update(id: Integer)
+GET 		/valores/:id               controllers.ProjetosCamadasValoresController.retrieve(id: Integer)
+GET 		/valores/geometria/:id     controllers.ProjetosCamadasValoresController.retrieveByIdGeometria(id: Integer)
+
+
+#Fotos
+POST 		/fotos/:id/files/upload    controllers.ProjetosCamadasGeometriasFotosController.uploadFile(id: Integer, tipo: Integer)
